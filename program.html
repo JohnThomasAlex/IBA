@@ -130,7 +130,6 @@
 
     <section id="courses" class="courses section py-5">
       <div class="container">
-
         <!-- Header Section -->
         <div class="text-center mb-5">
           <h2 class="section-title display-4 fw-bold text-gradient">Our Bible Courses</h2>
@@ -152,7 +151,8 @@
                   A foundational course covering key themes and stories in the Bible, perfect for beginners starting
                   their faith journey.
                 </p>
-                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#courseModal">Course
+                <a href="#" class="btn btn-outline-primary course-details" data-course="Bible Study Basics"
+                  data-description="A foundational course covering key themes and stories in the Bible, perfect for beginners starting their faith journey.">Course
                   Details →</a>
               </div>
             </div>
@@ -168,7 +168,8 @@
                   Dive deep into the Old Testament, exploring the history, prophecies, and wisdom literature that shaped
                   biblical faith.
                 </p>
-                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#courseModal">Course
+                <a href="#" class="btn btn-outline-primary course-details" data-course="Old Testament Studies"
+                  data-description="Dive deep into the Old Testament, exploring the history, prophecies, and wisdom literature that shaped biblical faith.">Course
                   Details →</a>
               </div>
             </div>
@@ -184,14 +185,14 @@
                   Learn about the life of Jesus, the growth of the early church, and key theological teachings in the
                   New Testament.
                 </p>
-                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#courseModal">Course
+                <a href="#" class="btn btn-outline-primary course-details" data-course="New Testament Insights"
+                  data-description="Learn about the life of Jesus, the growth of the early church, and key theological teachings in the New Testament.">Course
                   Details →</a>
               </div>
             </div>
           </div>
 
         </div>
-
       </div>
 
       <!-- Call to Action -->
@@ -266,12 +267,32 @@
         </div>
       </div>
     </div>
-    <!-- Success Modal -->
+
+    <!-- Success Modal (for successful registration) -->
     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="successModalLabel">Already Registered</h5>
+            <h5 class="modal-title" id="successModalLabel">Successfully Registered</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Congratulations! You have successfully registered for the course. Someone will contact you soon!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal (for already registered user) -->
+    <div class="modal fade" id="alreadyRegisteredModal" tabindex="-1" aria-labelledby="alreadyRegisteredModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="alreadyRegisteredModalLabel">Already Registered</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -283,6 +304,7 @@
         </div>
       </div>
     </div>
+
 
 
   </main>
@@ -363,13 +385,16 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Supabase setup
       const supabaseUrl = 'https://fcxdbxvuxvuoownippzm.supabase.co'; // Replace with your Supabase URL
       const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjeGRieHZ1eHZ1b293bmlwcHptIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNTAxMTQzNSwiZXhwIjoyMDUwNTg3NDM1fQ.HH3H1ZrB8tnyDSwsCO3Yj-YChJ9nYRKvnLxQ-Iw_xTA'; // Replace with your Supabase Key
+
+      // Initialize Supabase client
       const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
+      // Handle form submission
       document.getElementById('courseForm').addEventListener('submit', async function (e) {
         e.preventDefault(); // Prevent default form submission behavior
-        console.log("Form Submitted");
 
         const studentData = {
           name: document.getElementById('name').value,
@@ -386,9 +411,9 @@
         const isDuplicate = await checkDuplicateStudent(studentData.phone_number);
 
         if (isDuplicate) {
-          // If duplicate found, show success modal for already registered user
+          // If duplicate found, show "Already Registered" modal
           $('#courseModal').modal('hide');  // Close the form modal
-          $('#successModal').modal('show');  // Show success modal
+          $('#alreadyRegisteredModal').modal('show');  // Show "Already Registered" modal
           return;
         }
 
@@ -396,12 +421,13 @@
         const isSuccessful = await insertStudentData(studentData);
 
         if (isSuccessful) {
-          // After successful insertion, show the success modal
+          // After successful insertion, show the "Successfully Registered" modal
           $('#courseModal').modal('hide');  // Close the form modal
           $('#successModal').modal('show');  // Show success modal
         }
       });
 
+      // Function to check if a student is already registered
       async function checkDuplicateStudent(phoneNumber) {
         try {
           const { data, error } = await supabaseClient
@@ -422,6 +448,7 @@
         }
       }
 
+      // Function to insert student data into Supabase
       async function insertStudentData(studentData) {
         try {
           const { data, error } = await supabaseClient
@@ -443,10 +470,7 @@
         }
       }
     });
-
-
   </script>
-
 
 </body>
 
