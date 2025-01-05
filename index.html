@@ -27,8 +27,37 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 </head>
+<style>
+  .login-icon i {
+    font-size: 1.5rem;
+    /* Adjust the icon size */
+    margin-right: 8px;
+    /* Spacing between icon and text */
+    color: #007bff;
+    /* Custom icon color */
+  }
+
+  .login-link {
+    font-size: 16px;
+    /* Adjust font size for consistency */
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+
+  .login-link:hover i {
+    color: #0056b3;
+    /* Icon hover effect */
+  }
+
+  .login-link:hover {
+    color: #0056b3;
+    /* Text hover effect */
+  }
+</style>
 
 <body class="index-page">
 
@@ -67,6 +96,14 @@
           <li><a href="#contact">Contact</a></li>
           <li><a href="program.html">Program</a></li>
           <li><a href="aboutus.html">About Us</a></li>
+          <!-- Login Icon -->
+          <li class="login-icon">
+            <a href="login.html" class="login-link">
+              <i class="bi bi-person-circle"></i>
+              <span>Login</span>
+            </a>
+          </li>
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
