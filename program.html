@@ -386,12 +386,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Supabase setup
-      const supabaseUrl = 'https://fcxdbxvuxvuoownippzm.supabase.co'; // Replace with your Supabase URL
-      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjeGRieHZ1eHZ1b293bmlwcHptIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNTAxMTQzNSwiZXhwIjoyMDUwNTg3NDM1fQ.HH3H1ZrB8tnyDSwsCO3Yj-YChJ9nYRKvnLxQ-Iw_xTA'; // Replace with your Supabase Key
+      const supabaseUrl = 'https://lqugerdmxqpvigfchfgz.supabase.co'; // Replace with your Supabase URL
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxxdWdlcmRteHFwdmlnZmNoZmd6Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNTcwOTY1OCwiZXhwIjoyMDUxMjg1NjU4fQ.rYe9asgVqtbiJmPJwb30THyM913FYwrMAnGHm_4AEDY'; // Replace with your Supabase Key
 
       // Initialize Supabase client
-      const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-
+      const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey, {
+        db: { schema: 'schoolmanagement' } // Custom schema
+      });
       // Handle form submission
       document.getElementById('courseForm').addEventListener('submit', async function (e) {
         e.preventDefault(); // Prevent default form submission behavior
@@ -400,8 +401,8 @@
           name: document.getElementById('name').value,
           phone_number: document.getElementById('mobile').value,
           networker: document.getElementById('referral').value || null,
-          maintainer: null,
-          reg_number: null,
+          state: null,
+          email: null,
           city: document.getElementById('city').value || null,
           course_type: document.getElementById('course').value || null,
           additional_info: document.getElementById('info').value || null,
@@ -431,7 +432,7 @@
       async function checkDuplicateStudent(phoneNumber) {
         try {
           const { data, error } = await supabaseClient
-            .from('students_cp') // Update this table name if needed
+            .from('restricted_udl_students') // Update this table name if needed
             .select('*')
             .eq('phone_number', phoneNumber);
 
@@ -452,7 +453,7 @@
       async function insertStudentData(studentData) {
         try {
           const { data, error } = await supabaseClient
-            .from('students_cp') // Update this table name if needed
+            .from('restricted_udl_students') // Update this table name if needed
             .insert([studentData]);
 
           if (error) {
