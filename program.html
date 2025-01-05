@@ -39,23 +39,6 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
 </head>
-<style>
-  #suggestionsList {
-    background-color: white;
-    max-height: 200px;
-
-    z-index: 999;
-  }
-
-  #suggestionsList li {
-    padding: 8px;
-    cursor: pointer;
-  }
-
-  #suggestionsList li:hover {
-    background-color: #ddd;
-  }
-</style>
 
 <body class="index-page">
 
@@ -231,7 +214,18 @@
                 <label for="city" class="form-label">City</label>
                 <input type="text" class="form-control" id="city" placeholder="Enter your city" required>
               </div>
-
+              <!-- Referral Name Field with Auto-Suggestions -->
+              <div class="mb-3">
+                <label for="course" class="form-label">Select Course Language</label>
+                <select class="form-select" id="course_language" required>
+                  <option value="" selected disabled>Select a Language</option>
+                  <option value="TAMIL">Tamil</option>
+                  <option value="ENGLISH">English</option>
+                  <option value="TELEGU">Telegu</option>
+                  <option value="HINDI">Hindi</option>
+                  <option value="KANADA">Kanada</option>
+                </select>
+              </div>
               <!-- Course Dropdown -->
               <div class="mb-3">
                 <label for="course" class="form-label">Select Course</label>
@@ -240,6 +234,7 @@
                   <option value="Bible Study Basics">Bible Study Basics</option>
                   <option value="Old Testament Studies">Old Testament Studies</option>
                   <option value="New Testament Insights">New Testament Insights</option>
+                  <option value="All">All</option>
                 </select>
               </div>
 
@@ -249,9 +244,11 @@
                 <input type="text" class="form-control" id="referral" placeholder="Start typing a referral name..."
                   oninput="getSuggestions()">
                 <ul id="suggestionsList"
-                  style="position: absolute; top: 100%; left: 0; right: 0; background-color: white; border: 1px solid #ccc; z-index: 1000; margin-top: 5px; padding: 0; list-style-type: none;">
+                  style="position: absolute; top: 100%; left: 0; right: 0; background-color: white;  z-index: 1000; margin-top: 5px; padding: 0; list-style-type: none;">
                 </ul>
               </div>
+
+
 
               <!-- Additional Information -->
               <div class="mb-3">
@@ -406,6 +403,7 @@
           city: document.getElementById('city').value || null,
           course_type: document.getElementById('course').value || null,
           additional_info: document.getElementById('info').value || null,
+          course_language: document.getElementById('course_language').value || null,
         };
 
         // Check for duplicate registration

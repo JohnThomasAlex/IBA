@@ -10,7 +10,24 @@
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
-/* VIDEO SECTION */
+/* SUGGESTION SECTION */
+
+#suggestionsList {
+  background-color: white;
+  max-height: 200px;
+
+  z-index: 999;
+}
+
+#suggestionsList li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+#suggestionsList li:hover {
+  background-color: #ddd;
+}
+
 /* VIDEO SECTION */
 
 
