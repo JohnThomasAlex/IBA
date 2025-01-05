@@ -10,6 +10,63 @@
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
+
+/* LOGIN */
+.login-icon i {
+  font-size: 1.5rem;
+  /* Adjust the icon size */
+  margin-right: 8px;
+  /* Spacing between icon and text */
+  color: #007bff;
+  /* Custom icon color */
+}
+
+.login-link {
+  font-size: 16px;
+  /* Adjust font size for consistency */
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.login-link:hover i {
+  color: #0056b3;
+  /* Icon hover effect */
+}
+
+.login-link:hover {
+  color: #0056b3;
+  /* Text hover effect */
+}
+
+@media (min-width: 769px) {
+  .login-link {
+    text-align: left;
+    /* Ensure it's left-aligned on larger screens */
+    padding: 10px 15px;
+  }
+
+  .login-icon i {
+    display: none;
+    /* Hide the icon entirely */
+  }
+}
+
+/* Small-screen adjustments */
+@media (max-width: 768px) {
+  .login-link {
+    text-align: left;
+    /* Keep text left-aligned for small screens */
+    padding: 12px 15px;
+    /* Maintain spacing */
+  }
+
+  .login-icon i {
+    display: none;
+    /* Hide the icon entirely */
+  }
+}
+
 /* SUGGESTION SECTION */
 
 #suggestionsList {
