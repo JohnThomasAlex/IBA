@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td>${row.networker || 'N/A'}</td>
                 <td>${row.course_language || 'N/A'}</td>
                 <td>${row.additional_info || 'N/A'}</td>
+                <td>${row.created_at ? new Date(row.created_at).toISOString().split('T')[0] : 'N/A'}</td>
             </tr>
         `).join('');
         applyTableFeatures();

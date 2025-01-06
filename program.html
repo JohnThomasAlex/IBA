@@ -196,7 +196,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="courseModalLabel">Sign Up for the Course</h5>
@@ -204,74 +204,183 @@
           </div>
           <div class="modal-body">
             <form id="courseForm">
-              <!-- Name Field -->
-              <div class="mb-3">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
-              </div>
+              <div class="row">
+                <!-- Left Column -->
+                <div class="col-md-6">
+                  <!-- Name Field -->
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                  </div>
 
-              <!-- Mobile Number Field -->
-              <div class="mb-3">
-                <label for="mobile" class="form-label">Mobile Number</label>
-                <input type="tel" class="form-control" id="mobile" placeholder="Enter your mobile number"
-                  pattern="[0-9]{10}" required>
-              </div>
+                  <!-- Phone Number Field -->
+                  <div class="mb-3">
+                    <label for="phone_number" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone_number" placeholder="Enter your phone number"
+                      pattern="[0-9]{10}" required>
+                  </div>
 
-              <!-- City Field -->
-              <div class="mb-3">
-                <label for="city" class="form-label">City</label>
-                <input type="text" class="form-control" id="city" placeholder="Enter your city" required>
-              </div>
-              <!-- Referral Name Field with Auto-Suggestions -->
-              <div class="mb-3">
-                <label for="course" class="form-label">Select Course Language</label>
-                <select class="form-select" id="course_language" required>
-                  <option value="" selected disabled>Select a Language</option>
-                  <option value="TAMIL">Tamil</option>
-                  <option value="ENGLISH">English</option>
-                  <option value="TELEGU">Telegu</option>
-                  <option value="HINDI">Hindi</option>
-                  <option value="KANADA">Kanada</option>
-                </select>
-              </div>
-              <!-- Course Dropdown -->
-              <div class="mb-3">
-                <label for="course" class="form-label">Select Course</label>
-                <select class="form-select" id="course" required>
-                  <option value="" selected disabled>Select a course</option>
-                  <option value="Bible Study Basics">Bible Study Basics</option>
-                  <option value="Old Testament Studies">Old Testament Studies</option>
-                  <option value="New Testament Insights">New Testament Insights</option>
-                  <option value="All">All</option>
-                </select>
-              </div>
+                  <!-- Email Field -->
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                  </div>
 
-              <!-- Referral Name Field with Auto-Suggestions -->
-              <div class="mb-3" style="position: relative;">
-                <label for="referral" class="form-label">Referral Name (Optional)</label>
-                <input type="text" class="form-control" id="referral" placeholder="Start typing a referral name..."
-                  oninput="getSuggestions()">
-                <ul id="suggestionsList"
-                  style="position: absolute; top: 100%; left: 0; right: 0; background-color: white;  z-index: 1000; margin-top: 5px; padding: 0; list-style-type: none;">
-                </ul>
+                  <!-- City Field -->
+                  <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter your city" required>
+                  </div>
+
+                  <!-- Age Field -->
+                  <div class="mb-3">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="age" placeholder="Enter your age" min="1" required>
+                  </div>
+
+                  <!-- Job Occupation Field -->
+                  <div class="mb-3">
+                    <label for="job_occupation" class="form-label">Job Occupation</label>
+                    <input type="text" class="form-control" id="job_occupation" placeholder="Enter your occupation">
+                  </div>
+
+                  <!-- Gender Field -->
+                  <div class="mb-3">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select class="form-select" id="gender" required>
+                      <option value="" selected disabled>Select your gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                      <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                  </div>
+
+                  <!-- Marital Status Field -->
+                  <div class="mb-3">
+                    <label for="marital_status" class="form-label">Marital Status</label>
+                    <select class="form-select" id="marital_status" required>
+                      <option value="" selected disabled>Select your marital status</option>
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Widowed">Widowed</option>
+                      <option value="Divorced">Divorced</option>
+                    </select>
+                  </div>
+
+                  <!-- Religion Field -->
+                  <div class="mb-3">
+                    <label for="religion" class="form-label">Religion</label>
+                    <input type="text" class="form-control" id="religion" placeholder="Enter your religion">
+                  </div>
+
+                </div>
+
+                <!-- Right Column -->
+                <div class="col-md-6">
+                  <!-- Referral Field -->
+                  <div class="mb-3" style="position: relative;">
+                    <label for="referral" class="form-label">Referral Name (Optional)</label>
+                    <input type="text" class="form-control" id="referral" placeholder="Start typing a referral name..."
+                      oninput="getSuggestions()">
+                    <ul id="suggestionsList" class="suggestions-list"></ul>
+                  </div>
+
+                  <!-- District Field -->
+                  <div class="mb-3">
+                    <label for="district" class="form-label">District</label>
+                    <input type="text" class="form-control" id="district" placeholder="Enter your district">
+                  </div>
+
+                  <!-- State Field -->
+                  <div class="mb-3">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="form-control" id="state" placeholder="Enter your state">
+                  </div>
+
+                  <!-- Nationality Field -->
+                  <div class="mb-3">
+                    <label for="nationality" class="form-label">Nationality</label>
+                    <input type="text" class="form-control" id="nationality" placeholder="Enter your nationality">
+                  </div>
+
+                  <!-- Birthdate Field -->
+                  <div class="mb-3">
+                    <label for="birthdate" class="form-label">Birthdate</label>
+                    <input type="date" class="form-control" id="birthdate" required>
+                  </div>
+
+                  <!-- Years of Faith Field -->
+                  <div class="mb-3">
+                    <label for="years_of_faith" class="form-label">Years of Faith</label>
+                    <input type="number" class="form-control" id="years_of_faith" placeholder="Enter years of faith"
+                      min="0">
+                  </div>
+
+                  <!-- Education Level Field -->
+                  <div class="mb-3">
+                    <label for="education_level" class="form-label">Education Level</label>
+                    <input type="text" class="form-control" id="education_level"
+                      placeholder="Enter your education level">
+                  </div>
+
+                  <!-- Course Type Field -->
+                  <div class="mb-3">
+                    <label for="course_type" class="form-label">Course Available</label>
+                    <select class="form-select" id="course_type" required>
+                      <option value="" selected disabled>Select from choice</option>
+                      <option value="Single">Monday/wednesday/Friday</option>
+                      <option value="Married">Tuesday/Friday</option>
+                    </select>
+                  </div>
+
+                  <!-- Course Language Field -->
+                  <div class="mb-3">
+                    <label for="course_language" class="form-label">Select Course Language</label>
+                    <select class="form-select" id="course_language" required>
+                      <option value="" selected disabled>Select a language</option>
+                      <option value="TAMIL">Tamil</option>
+                      <option value="ENGLISH">English</option>
+                    </select>
+                  </div>
+
+                  <!-- Consent Checkbox -->
+
+
+                  <!-- Submit Button -->
+
+                </div>
+
+                <!-- Full-Width Fields: Address and Additional Information -->
+                <div class="col-md-12">
+                  <!-- Address Field -->
+                  <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea class="form-control" id="address" rows="3" placeholder="Enter your address"></textarea>
+                  </div>
+
+                  <!-- Additional Information Field -->
+                  <div class="mb-3">
+                    <label for="additional_info" class="form-label">Additional Information</label>
+                    <textarea class="form-control" id="additional_info" rows="3"
+                      placeholder="Share any specific expectations or questions..."></textarea>
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="consent" required>
+                    <label class="form-check-label" for="consent">I agree to the terms and conditions</label>
+                  </div>
+                  <button id="submitBtn" class="btn btn-primary">Submit</button>
+                </div>
+
               </div>
-
-
-
-              <!-- Additional Information -->
-              <div class="mb-3">
-                <label for="info" class="form-label">Additional Information (Optional)</label>
-                <textarea class="form-control" id="info" rows="3"
-                  placeholder="Share any specific expectations or questions you have..."></textarea>
-              </div>
-
-              <!-- Submit Button -->
-              <button id="submitBtn" class="btn">Submit</button>
             </form>
           </div>
         </div>
       </div>
     </div>
+
+
+
 
     <!-- Success Modal (for successful registration) -->
     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
@@ -351,41 +460,76 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    const referralNames = [
-      "John Doe", "Jane Smith", "Paul Johnson", "Emily Davis", "Michael Brown",
-      "Alice Cooper", "Bob Marley", "Charlie Brown", "Daniel Craig", "Ella Fitzgerald"
-    ];
+    document.addEventListener('DOMContentLoaded', () => {
+      // Supabase setup
+      const supabaseUrl = 'https://lqugerdmxqpvigfchfgz.supabase.co'; // Replace with your Supabase URL
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxxdWdlcmRteHFwdmlnZmNoZmd6Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNTcwOTY1OCwiZXhwIjoyMDUxMjg1NjU4fQ.rYe9asgVqtbiJmPJwb30THyM913FYwrMAnGHm_4AEDY'; // Replace with your Supabase Key
 
-    function getSuggestions() {
-      const input = document.getElementById("referral").value;
-      const suggestionsList = document.getElementById("suggestionsList");
+      // Initialize Supabase client
+      const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey, {
+        db: { schema: 'schoolmanagement' } // Custom schema
+      });
 
-      if (input.length > 1) {
-        const filteredNames = referralNames.filter(function (name) {
-          return name.toLowerCase().includes(input.toLowerCase());
-        });
+      const referralNames = []; // Placeholder for referral names
 
-        // Clear the previous suggestions
-        suggestionsList.innerHTML = "";
+      // Fetch referral names from the dim_networkers table
+      async function fetchReferralNames() {
+        try {
+          const { data, error } = await supabaseClient
+            .from('dim_networkers') // Use the correct table name here
+            .select('Name'); // Fetch the 'Name' column
 
-        if (filteredNames.length > 0) {
-          filteredNames.forEach(function (name) {
-            const li = document.createElement("li");
-            li.textContent = name;
-            li.onclick = function () {
-              document.getElementById("referral").value = name; // Set input to selected name
-              suggestionsList.innerHTML = ""; // Clear suggestions
-            };
-            suggestionsList.appendChild(li);
-          });
-        } else {
-          suggestionsList.innerHTML = "<li>No matches found</li>";
+          if (error) {
+            console.error('Error fetching referral names:', error.message);
+            return;
+          }
+
+          // Populate the referralNames array
+          referralNames.push(...data.map(item => item.Name)); // Ensure 'Name' matches the actual column in your table
+        } catch (err) {
+          console.error('Unexpected error during referral fetch:', err);
         }
-      } else {
-        suggestionsList.innerHTML = ""; // Clear suggestions if input is short
       }
-    }
+
+      // Call fetchReferralNames on page load
+      fetchReferralNames();
+
+      // Suggestion logic
+      document.getElementById('referral').addEventListener('input', function () {
+        const input = this.value;
+        const suggestionsList = document.getElementById('suggestionsList');
+
+        if (input.length > 1) {
+          // Ensure we're working with valid strings and handle undefined cases
+          const filteredNames = referralNames.filter(name =>
+            name && name.toLowerCase().includes(input.toLowerCase()) // Added check for undefined
+          );
+
+          // Clear the previous suggestions
+          suggestionsList.innerHTML = "";
+
+          if (filteredNames.length > 0) {
+            filteredNames.forEach(function (name) {
+              const li = document.createElement("li");
+              li.textContent = name;
+              li.onclick = function () {
+                document.getElementById("referral").value = name; // Set input to selected name
+                suggestionsList.innerHTML = ""; // Clear suggestions
+              };
+              suggestionsList.appendChild(li);
+            });
+          } else {
+            suggestionsList.innerHTML = "<li>No matches found</li>";
+          }
+        } else {
+          suggestionsList.innerHTML = ""; // Clear suggestions if input is short
+        }
+      });
+    });
   </script>
+
+
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.min.js"></script>
 
   <script>
@@ -398,20 +542,38 @@
       const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey, {
         db: { schema: 'schoolmanagement' } // Custom schema
       });
+
       // Handle form submission
       document.getElementById('courseForm').addEventListener('submit', async function (e) {
         e.preventDefault(); // Prevent default form submission behavior
 
         const studentData = {
-          name: document.getElementById('name').value,
-          phone_number: document.getElementById('mobile').value,
-          networker: document.getElementById('referral').value || null,
-          state: null,
-          email: null,
-          city: document.getElementById('city').value || null,
-          course_type: document.getElementById('course').value || null,
-          additional_info: document.getElementById('info').value || null,
-          course_language: document.getElementById('course_language').value || null,
+          name: document.getElementById('name')?.value || null,
+          phone_number: document.getElementById('phone_number')?.value || null,
+          alternate_contact_number: document.getElementById('alternate_contact_number')?.value || null,
+          email: document.getElementById('email')?.value || null,
+          networker: document.getElementById('networker')?.value || null,
+          referrer: document.getElementById('referrer')?.value || null,
+          referrer_email: document.getElementById('referrer_email')?.value || null,
+          city: document.getElementById('city')?.value || null,
+          district: document.getElementById('district')?.value || null,
+          state: document.getElementById('state')?.value || null,
+          nationality: document.getElementById('nationality')?.value || null,
+          age: parseInt(document.getElementById('age')?.value) || null,
+          birthdate: document.getElementById('birthdate')?.value || null,
+          job_occupation: document.getElementById('job_occupation')?.value || null,
+          gender: document.getElementById('gender')?.value || null,
+          marital_status: document.getElementById('marital_status')?.value || null,
+          religion: document.getElementById('religion')?.value || null,
+          years_of_faith: parseInt(document.getElementById('years_of_faith')?.value) || null,
+          education_level: document.getElementById('education_level')?.value || null,
+          course_type: document.getElementById('course_type')?.value || null,
+          course_language: document.getElementById('course_language')?.value || null,
+          preferred_language: document.getElementById('preferred_language')?.value || null,
+          how_did_you_hear: document.getElementById('how_did_you_hear')?.value || null,
+          address: document.getElementById('address')?.value || null,
+          additional_info: document.getElementById('additional_info')?.value || null,
+          additional_notes: document.getElementById('additional_notes')?.value || null
         };
 
         // Check for duplicate registration
@@ -477,8 +639,8 @@
         }
       }
     });
-
   </script>
+
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
