@@ -585,10 +585,9 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       // Supabase setup
-      const supabaseUrl = "https://lqugerdmxqpvigfchfgz.supabase.co"; // Replace with your Supabase URL
-      const supabaseKey =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxxdWdlcmRteHFwdmlnZmNoZmd6Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNTcwOTY1OCwiZXhwIjoyMDUxMjg1NjU4fQ.rYe9asgVqtbiJmPJwb30THyM913FYwrMAnGHm_4AEDY"; // Replace with your Supabase Key
-
+      const supabaseUrl = process.env.SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_ANON_KEY;
+      console.log(process.env.SUPABASE_URL)
       // Initialize Supabase client
       const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey, {
         db: { schema: "schoolmanagement" }, // Custom schema
