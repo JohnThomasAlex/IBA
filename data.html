@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convert | Export html Table to CSV & EXCEL File</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!-- Include jsPDF for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- Include SheetJS for Excel and CSV export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+
+    <style>
+        /* Button styling */
+        .btn-return {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Hover and active effects */
+        .btn-return:hover {
+            background-color: #0056b3;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-return:active {
+            background-color: #003f8c;
+            transform: translateY(0);
+        }
+
+        /* Ensure body is not overlapping the fixed button */
+        body {
+            padding-top: 60px;
+            /* Adjust this value if necessary */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Return to Web Page Button -->
+    <button onclick="window.location.href='index.html'" class="btn-return">
+        Return to Web Page
+    </button>
+
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h1>Student's Record</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                <img src="./assets/img/search.png" alt="">
+            </div>
+            <div class="export__file">
+                <label for="export-file" class="export__file-btn" title="Export File"></label>
+                <input type="checkbox" id="export-file">
+                <div class="export__file-options">
+                    <label>Export As &nbsp; &#10140;</label>
+                    <label id="toPDF">PDF <img src="./assets/img/pdf.png" alt="PDF"></label>
+                    <label id="toJSON">JSON <img src="./assets/img/json.png" alt="JSON"></label>
+                    <label id="toCSV">CSV <img src="./assets/img/csv.png" alt="CSV"></label>
+                    <label id="toEXCEL">EXCEL <img src="./assets/img/excel.png" alt="Excel"></label>
+                </div>
+            </div>
+        </section>
+
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Students <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Mobile <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Place <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Study <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Networker <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Language <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Additional Info <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Time of Registration <span class="icon-arrow">&UpArrow;</span></th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Data rows will be populated here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+</body>
+
+</html>
